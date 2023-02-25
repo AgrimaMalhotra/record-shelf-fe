@@ -1,0 +1,20 @@
+header {
+    background-color: #38497E;
+    color: white;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 45px;
+    padding-left: 30px;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-weight: lighter;
+}
+
+strong {
+    font-family:
+        Arial Black;
+}
