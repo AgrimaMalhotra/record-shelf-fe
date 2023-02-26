@@ -1,0 +1,57 @@
+.card {
+    height: 250px;
+    width: 250px;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-around;
+    box-shadow: 0 0 10px rgb(0 0 0 / 90%);
+    align-items: center;
+    margin: 1vh 0.5vw 1vh 0.5vw;
+}
+
+.card>img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 1px black solid;
+    margin: 13px 0 10px 0;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.song-details {
+    margin-right: 20px;
+    text-transform: lowercase;
+}
+
+.song-details>.song-name {
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.song-details>.singer {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.likes {
+    position: relative;
+    text-align: center;
+}
+
+.likes>.like-count {
+    position: absolute;
+    top: 7px;
+    left: 1px;
+    right: 0;
+    bottom: 0;
+    color: white;
+    font-weight: normal;
+}

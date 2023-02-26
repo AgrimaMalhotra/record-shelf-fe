@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import './Card.css';
 import grayHeart from '../../assets/heart-gray.svg';
 import redHeart from '../../assets/heart-red.svg';
-// import { UPDATE_LIKES_PER_SONG_ID } from '../../constants/apiEndPoints';
-// import makeRequest from '../../utils/makeRequest/makeRequest';
+import { UPDATE_LIKES_PER_SONG_ID } from '../../constants/apiEndPoints';
+import makeRequest from '../../utils/makeRequest/makeRequest';
 
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(props.songDetail.like);
@@ -20,7 +20,6 @@ const Card = (props) => {
       let updatedLikeCount = isLiked ? likeCount - 1 : likeCount + 1;
       await makeRequest(UPDATE_LIKES_PER_SONG_ID(props.songDetail.id), {
         data: {
-          count: updatedLikeCount,
           like: !isLiked,
         },
       });
@@ -42,21 +41,14 @@ const Card = (props) => {
           <p className="song-name">{props.songDetail.name}</p>
           <p className="singer">{props.songDetail.artist.name}</p>
         </div>
-        <div className="likes">
-          <img
-            src={isLiked ? redHeart : grayHeart}
-            alt="heart"
-            onClick={increaseLikeCount}
-          />
-          <p>{likeCount}</p>
-          {/* <img src={props.songDetail.like ? redHeart : grayHeart} alt="heart" />
-          <p>{props.songDetail.count}</p> */}
+        <div className="likes" onClick={increaseLikeCount}>
+          <img src={isLiked ? redHeart : grayHeart} alt="heart" />
+          <p className="like-count">{likeCount}</p>
         </div>
       </div>
     </div>
   );
 };
-
 Card.propTypes = {
   bgColor: propTypes.string.isRequired,
   songDetail: propTypes.shape({
