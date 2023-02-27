@@ -6,6 +6,9 @@ header {
     align-items: center;
     font-size: 45px;
     padding-left: 30px;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
 }
 
 p {
@@ -17,4 +20,11 @@ p {
 strong {
     font-family:
         Arial Black;
+}
+
+@media only screen and (max-width: 480px) {
+    header {
+        font-size: 35px;
+    }
+
 }

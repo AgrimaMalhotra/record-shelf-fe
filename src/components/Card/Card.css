@@ -1,13 +1,20 @@
 .card {
     height: 250px;
     width: 250px;
-    border-radius: 25px;
+    border-radius: 10px;
     display: flex;
     flex-flow: column wrap;
     align-content: space-around;
     box-shadow: 0 0 10px rgb(0 0 0 / 90%);
     align-items: center;
     margin: 1vh 0.5vw 1vh 0.5vw;
+    transition: all 0.2s ease-in-out;
+    padding: 0 15px;
+}
+
+.card:hover {
+    transition-duration: 0.2s;
+    transform: scale(1.05);
 }
 
 .card>img {
@@ -24,7 +31,7 @@
 }
 
 .song-details {
-    margin-right: 20px;
+    width: 150px;
     text-transform: lowercase;
 }
 
@@ -37,13 +44,22 @@
 }
 
 .song-details>.singer {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Poppins';
     font-weight: bold;
 }
 
 .likes {
     position: relative;
     text-align: center;
+}
+
+/* .likes>img {
+    transition: all 0.2s ease-in-out;
+} */
+
+.likes:hover {
+    transition-duration: 0.2s;
+    transform: scale(1.2);
 }
 
 .likes>.like-count {
@@ -54,4 +70,15 @@
     bottom: 0;
     color: white;
     font-weight: normal;
+}
+
+@media only screen and (max-width: 700px) {
+    .card {
+        width: 80vw;
+    }
+
+    .song-details {
+        margin-right: 30vw;
+        width: 90%;
+    }
 }

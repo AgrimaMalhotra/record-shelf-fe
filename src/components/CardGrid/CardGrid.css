@@ -1,5 +1,10 @@
 .card-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.card-grid::after {
+    content: "";
+    flex: auto;
 }

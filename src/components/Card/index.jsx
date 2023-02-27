@@ -42,7 +42,11 @@ const Card = (props) => {
           <p className="singer">{props.songDetail.artist.name}</p>
         </div>
         <div className="likes" onClick={increaseLikeCount}>
-          <img src={isLiked ? redHeart : grayHeart} alt="heart" />
+          <img
+            src={isLiked ? redHeart : grayHeart}
+            alt="heart"
+            className="imgg"
+          />
           <p className="like-count">{likeCount}</p>
         </div>
       </div>
