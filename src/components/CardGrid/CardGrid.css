@@ -1,10 +1,10 @@
 .card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.card-grid::after {
-    content: "";
-    flex: auto;
-}
+/* .card-grid::after {
+  content: "";
+  flex: auto;
+} */

@@ -1,30 +1,30 @@
 header {
-    background-color: #38497E;
-    color: white;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    font-size: 45px;
-    padding-left: 30px;
-    position: fixed;
-    width: 100vw;
-    z-index: 1;
+  background-color: #38497E;
+  color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: 45px;
+  padding-left: 30px;
+  /* position: fixed; */
+  width: 100vw;
+  /* z-index: 1; */
 }
 
 p {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-weight: lighter;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: lighter;
 }
 
 strong {
-    font-family:
-        Arial Black;
+  font-family:
+    Arial Black;
 }
 
 @media only screen and (max-width: 480px) {
-    header {
-        font-size: 35px;
-    }
+  header {
+    font-size: 35px;
+  }
 
 }

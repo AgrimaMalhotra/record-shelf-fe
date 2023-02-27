@@ -1,56 +1,63 @@
 .card {
-    height: 250px;
-    width: 250px;
-    border-radius: 10px;
-    display: flex;
-    flex-flow: column wrap;
-    align-content: space-around;
-    box-shadow: 0 0 10px rgb(0 0 0 / 90%);
-    align-items: center;
-    margin: 1vh 0.5vw 1vh 0.5vw;
-    transition: all 0.2s ease-in-out;
-    padding: 0 15px;
+  height: 250px;
+  width: 250px;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-around;
+  box-shadow: 0 0 10px rgb(0 0 0 / 90%);
+  align-items: center;
+  margin: 1vh 0.5vw 1vh 0.5vw;
+  transition: all 0.2s ease-in-out;
+  padding: 0 15px;
+}
+
+.card:nth-child(odd) {
+  background-color: #DFDFDF;
+}
+
+.card:nth-child(even) {
+  background-color: #ABABAB;
 }
 
 .card:hover {
-    transition-duration: 0.2s;
-    transform: scale(1.05);
+  transition-duration: 0.2s;
+  transform: scale(1.05);
 }
 
 .card>img {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    border: 1px black solid;
-    margin: 13px 0 10px 0;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 1px black solid;
+  margin: 13px 0 10px 0;
 }
 
 .card-body {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .song-details {
-    width: 150px;
-    text-transform: lowercase;
+  width: 200px;
+  text-transform: lowercase;
 }
 
 .song-details>.song-name {
-    font-size: 25px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 150px;
+  font-size: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 
 .song-details>.singer {
-    font-family: 'Poppins';
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .likes {
-    position: relative;
-    text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 /* .likes>img {
@@ -58,27 +65,27 @@
 } */
 
 .likes:hover {
-    transition-duration: 0.2s;
-    transform: scale(1.2);
+  transition-duration: 0.2s;
+  transform: scale(1.2);
 }
 
 .likes>.like-count {
-    position: absolute;
-    top: 7px;
-    left: 1px;
-    right: 0;
-    bottom: 0;
-    color: white;
-    font-weight: normal;
+  position: absolute;
+  top: 7px;
+  left: 1px;
+  right: 0;
+  bottom: 0;
+  color: white;
+  font-weight: normal;
 }
 
 @media only screen and (max-width: 700px) {
-    .card {
-        width: 80vw;
-    }
+  .card {
+    width: 80vw;
+  }
 
-    .song-details {
-        margin-right: 30vw;
-        width: 90%;
-    }
+  .song-details {
+    margin-right: 30vw;
+    width: 90%;
+  }
 }

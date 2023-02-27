@@ -10,28 +10,45 @@ import {
   GET_SONGS_DATA,
   GET_LIKES_PER_SONG_ID,
 } from '../../constants/apiEndPoints';
+import { useNavigate } from 'react-router-dom';
+import { ErrorMessage } from '..';
 
 const Main = () => {
   const [allSongsData, setAllSongsData] = useState([]);
+  const [requestError, setRequestError] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
-    makeRequest({ ...GET_SONGS_DATA }).then(async (data) => {
-      const updatedData = await fetchLikesData(data.data);
-      setAllSongsData(updatedData);
-    });
+    makeRequest({ ...GET_SONGS_DATA }, {}, navigate)
+      .then(async (data) => {
+        const updatedData = await fetchLikesData(data.data);
+        setAllSongsData(updatedData);
+      })
+      .catch((error) => {
+        setRequestError(error.message);
+      });
   }, []);
 
+  if (requestError) {
+    return <ErrorMessage errorMessage={requestError} />;
+  }
   const fetchLikesData = async (data) => {
-    for (let idx = 0; idx < data.length; idx++) {
-      await makeRequest(GET_LIKES_PER_SONG_ID(data[idx].id)).then(
-        (likesData) => {
+    try {
+      for (let idx = 0; idx < data.length; idx++) {
+        await makeRequest(
+          GET_LIKES_PER_SONG_ID(data[idx].id),
+          {},
+          navigate
+        ).then((likesData) => {
           data[idx] = {
             ...data[idx],
             ...likesData.data,
           };
-        }
-      );
+        });
+      }
+      return data;
+    } catch (error) {
+      return <ErrorMessage errorMessage={requestError} />;
     }
-    return data;
   };
 
   const [clickedGenreIcon, setClickedGenreIcon] = useState(false);
