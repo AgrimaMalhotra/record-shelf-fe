@@ -1,63 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CardGrid from '../CardGrid';
 import './Main.css';
 import genreIcon from '../../assets/icon-genre.svg';
 import gridIcon from '../../assets/icon-grid.svg';
-import makeRequest from '../../utils/makeRequest/makeRequest';
 import GENRE_IMAGE_MAPPING from '../../constants/imageMapping';
-import {
-  GET_SONGS_DATA,
-  GET_LIKES_PER_SONG_ID,
-} from '../../constants/apiEndPoints';
-import { useNavigate } from 'react-router-dom';
+import propTypes from 'prop-types';
 
-const Main = () => {
-  const [allSongsData, setAllSongsData] = useState([]);
-  // const [requestError, setRequestError] = useState();
-  const navigate = useNavigate();
-  useEffect(() => {
-    async function fetchData() {
-      const recordsDataWithoutLikes = await makeRequest(
-        { ...GET_SONGS_DATA },
-        {},
-        navigate
-      );
-      const likesResponseData = await Promise.all(
-        recordsDataWithoutLikes.data.map((record) => {
-          return makeRequest(GET_LIKES_PER_SONG_ID(record.id), {}, navigate);
-        })
-      );
-      const likesData = likesResponseData.map((resData) => resData.data);
-
-      const recordsData = recordsDataWithoutLikes.data.map((record, idx) => ({
-        ...record,
-        ...likesData[idx],
-      }));
-      setAllSongsData(recordsData);
-    }
-    fetchData();
-  }, []);
-
-  // const fetchLikesData = async (data) => {
-  //   try {
-  //     for (let idx = 0; idx < data.length; idx++) {
-  //       await makeRequest(
-  //         GET_LIKES_PER_SONG_ID(data[idx].id),
-  //         {},
-  //         navigate
-  //       ).then((likesData) => {
-  //         data[idx] = {
-  //           ...data[idx],
-  //           ...likesData.data,
-  //         };
-  //       });
-  //     }
-  //     return data;
-  //   } catch (error) {
-  //     return <ErrorMessage errorMessage={requestError} />;
-  //   }
-  // };
-
+const Main = ({ allSongsData }) => {
   const [clickedGenreIcon, setClickedGenreIcon] = useState(false);
 
   const handleClick = () => {
@@ -117,4 +66,7 @@ const Main = () => {
   );
 };
 
+Main.propTypes = {
+  allSongsData: propTypes.array.isRequired,
+};
 export default Main;
