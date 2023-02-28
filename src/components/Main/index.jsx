@@ -10,45 +10,53 @@ import {
   GET_LIKES_PER_SONG_ID,
 } from '../../constants/apiEndPoints';
 import { useNavigate } from 'react-router-dom';
-import { ErrorMessage } from '..';
 
 const Main = () => {
   const [allSongsData, setAllSongsData] = useState([]);
-  const [requestError, setRequestError] = useState();
+  // const [requestError, setRequestError] = useState();
   const navigate = useNavigate();
   useEffect(() => {
-    makeRequest({ ...GET_SONGS_DATA }, {}, navigate)
-      .then(async (data) => {
-        const updatedData = await fetchLikesData(data.data);
-        setAllSongsData(updatedData);
-      })
-      .catch((error) => {
-        setRequestError(error.message);
-      });
+    async function fetchData() {
+      const recordsDataWithoutLikes = await makeRequest(
+        { ...GET_SONGS_DATA },
+        {},
+        navigate
+      );
+      const likesResponseData = await Promise.all(
+        recordsDataWithoutLikes.data.map((record) => {
+          return makeRequest(GET_LIKES_PER_SONG_ID(record.id), {}, navigate);
+        })
+      );
+      const likesData = likesResponseData.map((resData) => resData.data);
+
+      const recordsData = recordsDataWithoutLikes.data.map((record, idx) => ({
+        ...record,
+        ...likesData[idx],
+      }));
+      setAllSongsData(recordsData);
+    }
+    fetchData();
   }, []);
 
-  if (requestError) {
-    return <ErrorMessage errorMessage={requestError} />;
-  }
-  const fetchLikesData = async (data) => {
-    try {
-      for (let idx = 0; idx < data.length; idx++) {
-        await makeRequest(
-          GET_LIKES_PER_SONG_ID(data[idx].id),
-          {},
-          navigate
-        ).then((likesData) => {
-          data[idx] = {
-            ...data[idx],
-            ...likesData.data,
-          };
-        });
-      }
-      return data;
-    } catch (error) {
-      return <ErrorMessage errorMessage={requestError} />;
-    }
-  };
+  // const fetchLikesData = async (data) => {
+  //   try {
+  //     for (let idx = 0; idx < data.length; idx++) {
+  //       await makeRequest(
+  //         GET_LIKES_PER_SONG_ID(data[idx].id),
+  //         {},
+  //         navigate
+  //       ).then((likesData) => {
+  //         data[idx] = {
+  //           ...data[idx],
+  //           ...likesData.data,
+  //         };
+  //       });
+  //     }
+  //     return data;
+  //   } catch (error) {
+  //     return <ErrorMessage errorMessage={requestError} />;
+  //   }
+  // };
 
   const [clickedGenreIcon, setClickedGenreIcon] = useState(false);
 
@@ -58,10 +66,10 @@ const Main = () => {
 
   const getGenreClassification = () => {
     return allSongsData.reduce((acc, song) => {
-      if (acc[song.genre.name]) {
-        acc[song.genre.name].push(song);
+      if (acc[song.genre['name']]) {
+        acc[song.genre['name']].push(song);
       } else {
-        acc[song.genre.name] = [song];
+        acc[song.genre['name']] = [song];
       }
       return acc;
     }, {});
