@@ -8,13 +8,13 @@ const Header = () => {
     navigate('/');
   };
   return (
-    <>
-      <header onClick={handleClick}>
+    <div>
+      <header onClick={handleClick} data-testid="page-title">
         <p>
           My <strong>Record </strong> Shelf
         </p>
       </header>
-    </>
+    </div>
   );
 };
 export default Header;

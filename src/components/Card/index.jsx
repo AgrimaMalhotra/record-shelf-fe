@@ -31,11 +31,7 @@ const Card = (props) => {
       );
       updateLikeData(updatedLikeCount, !isLiked);
     } catch (e) {
-      return (
-        <div className="backendError">
-          <p>{e.message}</p>
-        </div>
-      );
+      //
     }
   };
 
@@ -47,13 +43,20 @@ const Card = (props) => {
           <p className="song-name">{props.songDetail.name}</p>
           <p className="singer">{props.songDetail.artist.name}</p>
         </div>
-        <div className="likes" onClick={increaseLikeCount}>
+        <div
+          className="likes"
+          data-testid="test-likes"
+          onClick={increaseLikeCount}
+        >
           <img
             src={isLiked ? redHeart : grayHeart}
             alt="heart"
             className="imgg"
+            data-testid="test-heart-image"
           />
-          <p className="like-count">{likeCount}</p>
+          <p className="like-count" data-testid="test-like-count">
+            {likeCount}
+          </p>
         </div>
       </div>
     </div>
@@ -76,8 +79,5 @@ Card.propTypes = {
     count: propTypes.number.isRequired,
     like: propTypes.bool.isRequired,
   }).isRequired,
-  // isLiked: propTypes.bool.isRequired,
-  // likeCount: propTypes.number.isRequired,
-  // updateLikeData: propTypes.func.isRequired,
 };
 export default Card;

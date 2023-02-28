@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should render correctly  1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <img
+      alt="Song Poster"
+      src="https://i.scdn.co/image/ab67616d0000b27386a8ab515de4b7aef28cd631"
+    />
+    <div
+      class="card-body"
+    >
+      <div
+        class="song-details"
+      >
+        <p
+          class="song-name"
+        >
+          Lost
+        </p>
+        <p
+          class="singer"
+        >
+          Maroon 5
+        </p>
+      </div>
+      <div
+        class="likes"
+        data-testid="test-likes"
+      >
+        <img
+          alt="heart"
+          class="imgg"
+          data-testid="test-heart-image"
+          src="heart-gray.svg"
+        />
+        <p
+          class="like-count"
+          data-testid="test-like-count"
+        >
+          1
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

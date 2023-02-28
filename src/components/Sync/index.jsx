@@ -14,7 +14,7 @@ const Sync = () => {
           :(( <br />
           seems a bit empty in here...
         </p>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={handleClick} data-testid="sync-button">
           sync
         </button>
       </div>

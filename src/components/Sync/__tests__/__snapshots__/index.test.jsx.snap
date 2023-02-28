@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sync should render correctly  1`] = `
+<div>
+  <div
+    class="sync-page"
+  >
+    <div
+      class="sync-page-wrapper"
+    >
+      <p>
+        :(( 
+        <br />
+        seems a bit empty in here...
+      </p>
+      <button
+        data-testid="sync-button"
+        type="button"
+      >
+        sync
+      </button>
+    </div>
+  </div>
+</div>
+`;

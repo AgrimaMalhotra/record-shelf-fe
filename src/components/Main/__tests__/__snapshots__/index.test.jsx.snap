@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should render correctly 1`] = `
+<div>
+  <div
+    class="main-body"
+  >
+    <div
+      class="main-body-header"
+    >
+      <p>
+        all songs
+      </p>
+      <img
+        alt="Grid Icon"
+        src="icon-genre.svg"
+      />
+    </div>
+    <div
+      class="card-grid"
+    />
+  </div>
+</div>
+`;

@@ -1,4 +1,3 @@
-/*eslint-disable no-unused-vars*/
 import React, { useEffect, useState } from 'react';
 import CardGrid from '../CardGrid';
 import './Main.css';
@@ -95,7 +94,7 @@ const Main = () => {
         </>
       ) : (
         <>
-          <div className="main-body-header">
+          <div className="main-body-header" data-testid>
             <p>all songs</p>
             <img src={genreIcon} alt="Grid Icon" onClick={handleClick} />
           </div>

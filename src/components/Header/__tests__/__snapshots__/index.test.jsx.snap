@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly  1`] = `
+<div>
+  <div>
+    <header
+      data-testid="page-title"
+    >
+      <p>
+        My 
+        <strong>
+          Record 
+        </strong>
+         Shelf
+      </p>
+    </header>
+  </div>
+</div>
+`;
