@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 
 export const CardGrid = ({ allSongsData }) => {
   return (
-    <div className="card-grid">
+    <div className="card-grid" data-testid="card-grid">
       {allSongsData.map((songDetail) => (
         <Card key={songDetail.id} songDetail={songDetail} />
       ))}

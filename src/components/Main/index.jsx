@@ -59,7 +59,6 @@ const Main = () => {
   const getGenreClassification = () => {
     return allSongsData.reduce((acc, song) => {
       if (acc[song.genre.name]) {
-        song['genreImageUri'] = `genre-${song.genre.name}.png`;
         acc[song.genre.name].push(song);
       } else {
         acc[song.genre.name] = [song];
@@ -94,9 +93,14 @@ const Main = () => {
         </>
       ) : (
         <>
-          <div className="main-body-header" data-testid>
+          <div className="main-body-header" data-testid="test-all-songs-page">
             <p>all songs</p>
-            <img src={genreIcon} alt="Grid Icon" onClick={handleClick} />
+            <img
+              src={genreIcon}
+              alt="Grid Icon"
+              onClick={handleClick}
+              data-testid="test-genre-icon-button"
+            />
           </div>
           <CardGrid className="grid" allSongsData={allSongsData} />
         </>

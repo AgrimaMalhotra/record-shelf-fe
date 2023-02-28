@@ -12,7 +12,7 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-jest.mock('../../../utils/makeRequest/makeRequest')
+jest.mock('../../../utils/makeRequest/makeRequest');
 
 describe('Card', () => {
   it('should render correctly ', () => {
@@ -21,10 +21,10 @@ describe('Card', () => {
   });
   it('should increase like count on clicking like button', async () => {
     makeRequest.mockResolvedValue({
-      data:{
-        count:2,
-        like:true
-      }
+      data: {
+        count: 2,
+        like: true,
+      },
     });
     render(<Card songDetail={mockSongDetail} />);
     const likeCount = screen.getByTestId('test-like-count');
@@ -35,20 +35,20 @@ describe('Card', () => {
       expect(likeCount.innerHTML).toContain('2');
     });
   });
-  it('should change heart color to red on clicking it',async()=>{
-makeRequest.mockResolvedValue({
-  data:{
-    count:2,
-    like:true
-  }
-});
-    render(<Card songDetail={mockSongDetail}/>);
-    const heartIcon=screen.getByTestId('test-heart-image');
+  it('should change heart color to red on clicking it', async () => {
+    makeRequest.mockResolvedValue({
+      data: {
+        count: 2,
+        like: true,
+      },
+    });
+    render(<Card songDetail={mockSongDetail} />);
+    const heartIcon = screen.getByTestId('test-heart-image');
     const likeButton = screen.getByTestId('test-likes');
-expect(heartIcon.src).toContain('heart-gray.svg');
-fireEvent.click(likeButton);
-await waitFor(()=>{
-  expect(heartIcon.src).toContain('heart-red.svg');
-})
-  })
+    expect(heartIcon.src).toContain('heart-gray.svg');
+    fireEvent.click(likeButton);
+    await waitFor(() => {
+      expect(heartIcon.src).toContain('heart-red.svg');
+    });
+  });
 });

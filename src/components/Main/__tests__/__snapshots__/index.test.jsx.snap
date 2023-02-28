@@ -7,17 +7,20 @@ exports[`Main should render correctly 1`] = `
   >
     <div
       class="main-body-header"
+      data-testid="test-all-songs-page"
     >
       <p>
         all songs
       </p>
       <img
         alt="Grid Icon"
+        data-testid="test-genre-icon-button"
         src="icon-genre.svg"
       />
     </div>
     <div
       class="card-grid"
+      data-testid="card-grid"
     />
   </div>
 </div>
